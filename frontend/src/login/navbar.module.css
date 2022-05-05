@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.s0{
+    position: relative;
+    width: 100%;
+    background: #fff !important;
+}
+.s0 nav{
+    width: 1120px;
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+.s0 nav img{
+    width: 140px;
+}
+.s0 nav .navbar{
+    position: relative;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.s0 nav .navbar .navs{
+    position: relative;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 10px ;
+    align-items: center;
+}
+.s0 nav .navbar .navs .discover{
+    cursor: pointer;
+    color: #666666;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.s0 nav .navbar .navs .discover:hover{
+    color: #000;
+}
+.s0 nav .navbar .navs2{
+    position: relative;
+    display: flex;
+    width: 40%;
+    flex-direction: row;
+    justify-content: space-around;
+    border-left: 1px solid #ccc;
+    align-items: center;
+}
+.s0 nav .navbar .navs2 a{
+    color: #666666;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+.s0 nav .navbar .navs2 a:hover{
+    color: #000;
+    background: rgb(228, 228, 228);
+}
+.s0 nav .navbar .navs2 .button{
+    color: #0a66c2;
+    background: none;
+    border: 2px solid #0a66c2;
+    padding: 8px 12px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+.s0 nav .navbar .navs2 .button:hover{
+    box-shadow: 1px 1px 1px #0a66c2 inset, -1px -1px 1px #0a66c2 inset;
+    background: #0a66c221;
+}
+.loginbody{
+    position: relative;
+    width: 100%;
+    background: #fff ; 
+    min-height: 89.3vh;
+}
+.loginbody1{
+    position: relative;
+    width: 1120px;
+    margin: auto;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.loginbody1 .left{
+    position: relative;
+    padding: 20px 0;
+    width: 55%;
+    text-align: left;
+}
+.loginbody1 .left h1{
+    font-size: 53px;
+    color: #8f5849;
+    font-weight: 100;
+    margin-bottom: 35px;
+    position: relative;
+}
+.loginbody1 .left .d1{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 19px 16px;
+    border-radius: 8px;
+    border: 0.5px solid rgb(225, 225, 225);
+    font-size: 18px;
+    margin: 20px 0;
+    width: 65%;
+    cursor: pointer;
+}
+.loginbody1 .left .d1:hover{
+    box-shadow: 2px 2px 13px rgb(140, 140, 140), -1px -1px 5px rgb(234, 234, 234);
+}
+
+.loginbody1 .right{
+    width: 50%;
+    position: relative;
+}
+.loginbody1 .right img{
+    width: 100%;
+    position: relative;
+}
+
+@media (max-width : 1122px) {
+    .s0 nav{
+        width: 100%;
+    }
+    .loginbody1{
+        width: 100%;
+    }
+}
+@media (max-width : 822px) {
+    .s0 nav{
+        width: 100%;
+
+    }
+    .s0 nav .navbar{
+        width: 70%;
+
+    }
+    .loginbody1{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .loginbody1 .left{
+        width: 90%;
+    }
+    .loginbody1 .left .d1{
+        width: 100%;
+    }
+    .loginbody1 .right{
+        width: 90%;
+    }
+}

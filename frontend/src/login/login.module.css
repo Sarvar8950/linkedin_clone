@@ -1,0 +1,76 @@
+.loginpage{
+    position: relative;
+    width: 100%;
+    background: #f3f3ef !important;
+    min-height: 100vh;
+}
+.loginpage img{
+    width: 140px;
+    margin: 20px 0;
+}
+.loginpage h1{
+    font-weight: 400;
+    margin: 5px 0 25px;
+}
+.loginpage form{
+    width: 400px;
+    background: #fff;
+    margin: auto;
+    border-radius: 8px;
+    padding: 20px;
+}
+.loginpage form p{
+    font-size: 14px;
+    color: #666;
+    text-align: left;
+}
+.loginpage form .inputs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 7px;
+    border: 1px solid #000;
+    border-radius: 6px;
+    align-items: flex-start;
+    margin: 5px 0 20px;
+}
+.loginpage form .inputs input{
+    border: none;
+    outline: none;
+    width: 90%;
+}
+.loginpage form .inputs .show:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.loginpage form .privacy{
+    text-align: center;
+    font-size: 13px;
+}
+.loginpage form .privacy span{
+    color: #0a66c2;
+    font-weight: 500;
+}
+.loginpage form .privacy span:hover{
+    text-decoration: underline;
+}
+.loginpage form button{
+    padding: 14px 25px;
+    width: 100%;
+    background: #0a66c2;
+    font-size: 18px;
+    border: none;
+    margin: 10px 0;
+    border-radius: 25px;
+    color: #fff;
+    cursor: pointer;
+}
+.loginpage form .signinline{
+    text-align: center;
+    font-size: 18px;
+    margin: 10px 0;
+}
+.loginpage form .signinline a{
+    text-decoration: none;
+    color: #0a66c2;
+}
