@@ -2,12 +2,27 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom"
 import style from "./login.module.css"
 
-export default function Register() {
+export default function Register(e) {
+    // e.preventDefault();
     const navigate = useNavigate()
     const [name, setname] = React.useState("")
     const [email, setemail] = React.useState("")
     const [contact, setcontact] = React.useState(Number)
     const [password, setpassword] = React.useState("")
+
+    function googlelogin(e) {
+        e.preventDefault()
+        fetch('http://localhost:8001/google')
+        .then((res) => {
+            console.log(res)
+            // if (res.status === 201) {
+            //     alert("You are Registered")
+            //     // navigate('/login')
+            // } else {
+            //     alert("Some Error occured")
+            // }
+        })
+    }
 
     function add(e) {
         if (name.length < 3) {
@@ -87,9 +102,14 @@ export default function Register() {
                     </div>
                     <p className={style.privacy}>By clicking Agree & Join, you agree to the LinkedIn <span> User Agreement </span>, <span> Privacy Policy </span>, and <span> Cookie Policy</span>. </p>
                     <button onClick={add}>Agree & Join</button>
+                    <p style={{textAlign : "center"}}>OR</p>
+                    <button onClick={googlelogin}>Continue with Google</button>
                     <p className={style.signinline}>Alredy on LinkedIn? <Link to="/login">Log in</Link></p>
                 </form>
             </div>
         </>
     )
 }
+
+
+

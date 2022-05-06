@@ -1,14 +1,17 @@
 import React from 'react'
 import style from "./login.module.css"
 import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux';
-import { login, logout } from "../Redux/action"
+// import { useDispatch } from 'react-redux';
+// import { login, logout } from "../Redux/action"
 
-export default function Login({ setlogedin }) {
+export default function Login({ setlogedin, islogedin }) {
     const navigate = useNavigate();
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const [email, setemail] = React.useState("")
     const [password, setpassword] = React.useState("")
+    // const [token, setToken] = React.useState("")
+
+    
     
     function loginfun(e) {
         e.preventDefault();
@@ -30,15 +33,21 @@ export default function Login({ setlogedin }) {
             .then((res) => res.json())
             .then((res) => {
                 // console.log(res[0].token)
-                if (res[0].token.length > 1) {
-                    dispatch(login())
+                if(res[0].token.length > 1) {
+                    // setToken(res[0].token)
+                    localStorage.setItem('tokenIs', res[0].token);
+                    // dispatch(login())
                     alert("You are loged in")
-                    setlogedin(res[0].token)
+                    // setlogedin(res[0].token)
+                    // localStorage.setItem("token" , islogedin)
                     navigate("/home")
+                    // window.location.redirect("/home")
+                    window.location.reload();
                 } else {
-                    dispatch(logout())
+                    // dispatch(logout())
                     alert("Invalid credantial")
-                    setlogedin("")
+                    localStorage.setItem('tokenIs', "");
+                    // setlogedin("")
                 }
             })
     }

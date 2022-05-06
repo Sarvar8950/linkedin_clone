@@ -12,16 +12,18 @@ import Profile from './Components/Profile';
 import Jobs from './Components/Jobs';
 import Notification from './Components/Notification';
 import Message from './Components/Message';
-import store from './Redux/store';
+// import store from './Redux/store';
+// import { login } from './Redux/action';
 
 function App() {
   const [islogedin, setlogedin] = React.useState('')
+  console.log(localStorage.getItem("tokenIs"),"before code")
   return (
     <div className="App">
-      {!store.getState() ? 
+      {localStorage.getItem("tokenIs") === null ? 
        <Routes>
         <Route path="/" element={<Navbarlogin />} ></Route>
-        <Route path="/login" element={<Login setlogedin={setlogedin} />} ></Route>
+        <Route path="/login" element={<Login setlogedin={setlogedin} islogedin={islogedin} />} ></Route>
         <Route path="/register" element={<Register />} ></Route>
       </Routes>
      :

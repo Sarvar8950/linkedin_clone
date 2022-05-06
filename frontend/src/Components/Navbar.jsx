@@ -1,8 +1,15 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import "../style.css"
+import {useNavigate} from 'react-router-dom'
 
 export default function Navbar() {
+    const navigate = useNavigate()
+    function logout() {
+        localStorage.clear();
+        navigate("/")
+        window.location.reload();
+    }
   return (
     <>
       <section className="s1" id="home">
@@ -73,6 +80,7 @@ export default function Navbar() {
                             <div className="elipseicon">
                                 <i className="fa-solid fa-ellipsis"></i>
                             </div>
+                            <button onClick={logout}>Logout</button>
                         </div>
                     </div>
                 </nav>
