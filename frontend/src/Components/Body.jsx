@@ -2,7 +2,9 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import Createpost from "./createpost"
 import "../style.css"
-
+import {Posts} from '../Components/Post/Posts'
+import {CreatePostBtn} from '../Components/Post/CreatePostBtn'
+// import 
 export default function Body() {
     const [num, setNum] = React.useState(true);
     const [startpost, setstartpost] = React.useState(false)
@@ -21,7 +23,7 @@ export default function Body() {
     }
     return (
         <>
-            {startpost && <Createpost startpost={setstartpost} />}
+            {startpost && <CreatePostBtn startpost={setstartpost} />}
             <section className="s2">
                 <div className="body">
                     <div className="left">
@@ -91,7 +93,7 @@ export default function Body() {
                                 </div>
                             </div>
                             <div className="d4">
-                                {/* <Posts /> */}
+                                <Posts />
                                 <br />
                             </div>
                         </div>

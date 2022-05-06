@@ -1,6 +1,7 @@
 import React from 'react'
 import style from "./login.module.css"
 import { Link, useNavigate } from 'react-router-dom'
+import {baseUrl} from '../Components/config'
 // import { useDispatch } from 'react-redux';
 // import { login, logout } from "../Redux/action"
 
@@ -23,7 +24,7 @@ export default function Login({ setlogedin, islogedin }) {
             email: email,
             password: password
         }
-        fetch(`http://localhost:8001/login`, {
+        fetch(`${baseUrl}/login`, {
             method: "POST",
             body: JSON.stringify(obj),
             headers: {

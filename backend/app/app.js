@@ -5,7 +5,9 @@ const multer = require('multer');
 const path = require('path')
 const cors = require('cors')
 const passport = require('../passport/passport');
-
+const upload2 =  require('../FileUpload/fileUpload')
+// const postController = require('../Controllers/post')
+const postController = require('../Controllers/post')
 const diskstorage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, path.join(__dirname, '..', "images"))
@@ -58,4 +60,9 @@ app.get('/google/callback',
     }
 );
 
+
+app.post('/saveImage', upload2.single('file'), postController.saveImage)
+
+app.post('/createPost', postController.createUserData)
+app.get('/get-all-post', postController.getAllPost)
 module.exports = app

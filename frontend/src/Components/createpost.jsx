@@ -28,7 +28,7 @@ export default function Createpost({ startpost }) {
                         <textarea placeholder="What do you want to talk about?"></textarea>
                     </div>
                     <div className="d23">
-                        <p className="hastag">Add Hastag</p>
+                        <p className="hastag">Add Hastag cc</p>
                     </div>
                 </div>
                 <div className="d3">

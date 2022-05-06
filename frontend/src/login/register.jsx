@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom"
+import { baseUrl } from "../Components/config";
 import style from "./login.module.css"
 
 export default function Register(e) {
@@ -12,7 +13,7 @@ export default function Register(e) {
 
     function googlelogin(e) {
         e.preventDefault()
-        fetch('http://localhost:8001/google')
+        fetch(`${baseUrl}/google`)
         .then((res) => {
             console.log(res)
             // if (res.status === 201) {
@@ -48,7 +49,7 @@ export default function Register(e) {
             email: email,
             password: password
         }
-        fetch('http://localhost:8001/register', {
+        fetch(`${baseUrl}/register`, {
             method: "POST",
             body: JSON.stringify(obj),
             headers: {

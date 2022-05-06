@@ -1,6 +1,10 @@
 const http = require('http')
 const app = require('./app/app')
-require('./mongodb/mongodb')
+// const app = require('./Routes/post');
+connectToDB=require('./mongodb/mongodb')
 require('dotenv/config');
-
-http.createServer(app).listen(process.env.PORT , () => console.log("server is running on localhost:8001"))
+const PORT=8001;
+http.createServer((app)).listen(PORT , () =>{
+    console.log(`server is running on localhost: ${PORT}`)
+    new connectToDB();
+})
