@@ -49,6 +49,7 @@ async function sendmail(data) {
 async function login(req,res,next) {
     const email = req.body.email
     const response = await registerschema.findOne({ "email": email })
+    // console.log(response)
     if(!response) {
         res.status(501).send("Invalid Mail")
         return;
@@ -61,7 +62,7 @@ async function login(req,res,next) {
         }
         const token = jwtservice.generateToken(userdetails);
         console.log(token)
-        res.status(200).send([{"token" : token}])
+        res.status(200).send([{"token" : token, "userdata" : response}])
     } else {
         console.log("Something is wrong")
         res.status(400).send("Data not matched")

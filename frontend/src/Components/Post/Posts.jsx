@@ -140,18 +140,37 @@ export const Posts = () => {
     const updatedData = postIs.filter((item) => item.id !== id)
     dispatch(deletPost(updatedData))
   }
+  function deletepostshowhide() {
+    var deletebtn = document.getElementById("deletebtn")
+    if(deletebtn.style.display === "none") {
+      deletebtn.style.display = "block"
+    } else {
+      deletebtn.style.display = "none"
+    }
+  }
   const commentinput = {
-    padding : "3px",
     fontSize : "15px",
     marginBottom : "5px",
     outline : "none",
+    border : `1px solid #ccc`,
+    background : "none",
+    width : "100%",
+    color : "#fff",
+    borderRadius : "25px",
+    padding : "10px"
   }
   const commentbtn = {
     padding : "3px 10px",
-    fontSize : "15px",
     cursor : "pointer",
     marginLeft : "4px",
-    marginBottom : "5px"
+    marginBottom : "5px",
+    background : "#70b5f9",
+    color : "#1d2226",
+    borderRadius : "25px",
+    border : "none",
+    outline : "none",
+    fontSize : "18px",
+    left : "0px"
   }
 
   return (
@@ -160,7 +179,6 @@ export const Posts = () => {
       {postIs?.map((item) => {
         return (
           <div key={item.id} className="post" style={{ marginBottom: "20px" }}>
-            <br />
             {/* <button onClick={handleDispatch}>submit allPost</button> */}
             <div className="p1">
               <div className="postdata">
@@ -169,20 +187,20 @@ export const Posts = () => {
                     <img src="/images/profileimage.jpeg" alt="User Profile" />
                   </div>
                   <div className="l2">
-                    <p>{item.userCreatedPostName} ⭐</p>
-                    <button style={{ border: "1px solid #fff", background: "#1b2226" }} onClick={() => { handleDeletePost(item.id) }}>
-                      <NotiFicationMess msg={" Post Delete Succesfully !"} btn={"deletd post"} />
-                    </button>
+                    <p>{item.userCreatedPostName} User</p>
                     <p className="small">{item.nameOfOrganization}</p>
                     <p className="small">
                       {dateDiffrance(new Date(), item.postCreatedTime)} ago
                     </p>
+                    <button id="deletebtn" style={{position:"absolute",right:0 ,border: "1px solid #fff", background: "#1b2226", display:"none" }} onClick={() => { handleDeletePost(item.id) }}>
+                      <NotiFicationMess msg={" Post Delete Succesfully !"} btn={"Delete"} />
+                    </button>
                     <p style={{ marginBottom: "20px" }}> {item.postDescription} </p>
                   </div>
                 </div>
                 <p className="righttext">
                   <i class="fa-solid fa-bookmark"></i>
-                  <i class="fa-solid fa-ellipsis"></i>
+                  <i class="fa-solid fa-ellipsis" onClick={deletepostshowhide}></i>
                 </p>
               </div>
             </div>
@@ -234,16 +252,18 @@ export const Posts = () => {
             </div>
 
             <div>
-              {item?.showCommentInput && (<div className="input-comment-main">
+              {item?.showCommentInput && (
+              <div className="input-comment-main">
                 <input
                   type="text"
                   style={commentinput}
                   value={sendComment}
                   onChange={handleComment}
                   clasName="inputComment"
+                  placeholder="Add a comment..."
                 />
                 {sendComment !== "" && (
-                  <button style={commentbtn} onClick={() => sendcommentOnPost(item.id)}>post comment </button>
+                  <button style={commentbtn} onClick={() => sendcommentOnPost(item.id)}>Post </button>
                 )}
               </div>)
               }

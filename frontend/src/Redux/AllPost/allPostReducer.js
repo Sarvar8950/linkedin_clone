@@ -11,7 +11,7 @@ const initialState = {
 };
 export const allPostReducer = (store=initialState, action )=>{
 
-    console.log('action inside reducer :', action.payload)
+    // console.log('action inside reducer :', action.payload)
     switch (action.type) {
         case GET_ALL_POST:
             return {

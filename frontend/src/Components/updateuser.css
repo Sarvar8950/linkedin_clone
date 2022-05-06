@@ -1,0 +1,101 @@
+.updateuser{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background: rgba(0, 0, 0, 0.451);
+    z-index: 111111;
+    color: #fff;
+}
+.updateuser .update{
+    border-radius: 8px;
+    position: relative;
+    width: 750px;
+    margin: 100px auto;
+    height: 480px;
+    background: #1d2226;
+}
+.updateuser .update .d1{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 18px;
+}
+.updateuser .update .d1 i{
+    cursor: pointer;
+    padding: 10px 14px;
+    border-radius: 50%;
+}
+.updateuser .update .d1 i:hover{
+    background: rgba(213, 213, 213, 0.575);
+}
+.updateuser .update .profile{
+    height: 280px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.updateuser .update .profile img{
+    height: 270px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.updateuser .update .d2{
+    position: relative;
+    padding-top: 10px;
+    text-align: left;
+    border: 1px solid #fff;
+    width: 90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 25px;
+    margin-left: 15px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.updateuser .update .d3{
+    position: relative;
+    padding: 0 15px;
+    width: 100%;
+    height: 68px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.updateuser .update .d3 .d31{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 50%;
+}
+.updateuser .update .d3 .d32{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.updateuser .update .d3 .p1{
+    height: 100%;
+    padding: 0 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.updateuser .update .d3 .p1:hover{
+    background: rgba(213, 213, 213, 0.547);
+}
+
+@media (max-width : 750px) {
+    .updateuser .update{
+        width: 100%;
+    }
+}

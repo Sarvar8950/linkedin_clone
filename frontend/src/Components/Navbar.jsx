@@ -80,7 +80,7 @@ export default function Navbar() {
                             <div className="elipseicon">
                                 <i className="fa-solid fa-ellipsis"></i>
                             </div>
-                            <button onClick={logout}>Logout</button>
+                            <button className='logoutbtn' onClick={logout}>Sign out</button>
                         </div>
                     </div>
                 </nav>

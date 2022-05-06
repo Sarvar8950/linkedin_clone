@@ -5,20 +5,21 @@ import axios from 'axios';
 import { useDispatch } from "react-redux";
 import {addsinglePost} from '../../Redux/AllPost/allPostAction'
 // import {ImgTOBase64} from './Images/ImgTOBase64';
-import { useAuth0 } from '@auth0/auth0-react';
+// import { useAuth0 } from '@auth0/auth0-react';
 // import { NotiFicationMess } from './NotiFicationMess'
 import { NotiFicationMess } from '../../Utility/NotiFicationMess'
 import { ImgTOBase64 } from '../../Utility/ImgTOBase64'
 
 
 export  function CreatePostBtn({startpost}) {
+    const userdata = JSON.parse(localStorage.getItem("userdata"))
     const[imgData, setImgData]=useState('');
 const[postDescription, setPosDescription]=useState('');
 //   let postIs = useSelector((store) => store.allPost.allPost);
     const dispatch = useDispatch();
   //   console.log("postIs postIs.allPost *****  ", postIs);
     // const dispatch = useDispatch();
-    const {user, } = useAuth0()
+    // const {user, } = useAuth0()
     function exit() {
         startpost(false)
     }
@@ -89,7 +90,7 @@ console.log('xx', xx)
         console.log('iiiiiiiiii ',  imgData)
     }
     return (
-        <section className="s7">
+        <section className="s7" style={{textAlign : "left"}}>
             <div className="s77">
                 <div className="d1">
                     {/* <button onClick={postDelete}>delete p</button> */}
@@ -100,9 +101,9 @@ console.log('xx', xx)
                 <div className="d2">
                     <div className="d20">
                         {/* <ImgTOBase64 setImgData={setImgData} /> */}
-                        <img src={user?.picture} alt="profileimage" />
+                        <img src="./images/profileimage.jpeg" alt="profileimage" />
                             <div className="d21">
-                            <p>{user?.nickname} </p>
+                            <p>{userdata?.name} </p>
                                 <p className="anymore">
                                     <i className="fa-solid fa-earth-americas"></i>
                                     Anyone
@@ -136,7 +137,7 @@ console.log('xx', xx)
                     </div>
                     <div className="d32">
                         <button onClick={sendPost} >
-                        <NotiFicationMess msg={"Post Created Succesfully !"} btn={"post 123"} />
+                        <NotiFicationMess msg={"Post Created Succesfully !"} btn={"Post"} />
                         {/* <NotiFicationMess msg={" Post Created Succesfully ! "} btn={"Post"} /> */}
                         </button>
                     </div>

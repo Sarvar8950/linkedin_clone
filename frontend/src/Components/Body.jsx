@@ -1,12 +1,14 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import Createpost from "./createpost"
+// import Createpost from "./createpost"
 import "../style.css"
 import {Posts} from '../Components/Post/Posts'
 import {CreatePostBtn} from '../Components/Post/CreatePostBtn'
 // import 
 export default function Body() {
     const [num, setNum] = React.useState(true);
+    const userdata = JSON.parse(localStorage.getItem("userdata"))
+    // console.log(userdata)
     const [startpost, setstartpost] = React.useState(false)
     function startPost() {
         setstartpost(true)
@@ -15,10 +17,10 @@ export default function Body() {
         var show = document.querySelector(".showmoretext")
         if (num) {
             setNum(!num)
-            show.innerHTML = `<p>Show more <i className="fa-solid fa-chevron-down"></i></p>`
+            show.innerHTML = `<p>Show more <i class="fa-solid fa-chevron-down"></i></p>`
         } else {
             setNum(!num)
-            show.innerHTML = `<p>Show less <i className="fa-solid fa-chevron-up"></i></p>`
+            show.innerHTML = `<p>Show less <i class="fa-solid fa-chevron-up"></i></p>`
         }
     }
     return (
@@ -34,7 +36,7 @@ export default function Body() {
                                 </div>
                                 <div className="box12">
                                     <img src="/images/profileimage.jpeg" alt="UserImage" />
-                                    <Link to="/profile"><b>User Name</b></Link>
+                                    <Link to="/profile"><b>{userdata?.name}</b></Link>
                                     <p className="small">Aspiring Full Stack Web Development at Masai School</p>
                                 </div>
                             </div>

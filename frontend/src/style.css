@@ -403,9 +403,23 @@ body{
     display: flex;
     flex-direction: row;
     align-items: center;
+    text-align: left;
 }
 .s2 .body .right .up .d4 .post .p1 .righttext{
     text-align: right;
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.s2 .body .right .up .d4 .post .p1 .righttext i{
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+}
+.s2 .body .right .up .d4 .post .p1 .righttext i:hover{
+    background: rgba(203, 203, 203, 0.389);
 }
 .s2 .body .right .up .d4 .post .p2{
     position: relative;
@@ -501,6 +515,7 @@ body{
     list-style: circle;
     cursor: pointer;
     font-size: 14px;
+    text-align: left;
 }
 .s2 .body .right .right1 .newslist ul li:hover{
     background: rgba(192, 192, 192, 0.247);
@@ -2036,6 +2051,19 @@ body{
 .hide{
     font-size: 18px;
     display: none !important;
+}
+.logoutbtn{
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    outline: none;
+    color: #fff;
+    padding: 15px 5px;
+    border-radius: 4px;
+}
+.logoutbtn:hover{
+    background: rgba(205, 205, 205, 0.471);
 }
 
 @media (max-width:1200px) {

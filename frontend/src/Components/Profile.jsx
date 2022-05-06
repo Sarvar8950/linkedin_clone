@@ -1,8 +1,12 @@
 import React from 'react'
+import Updateuser from './Updateuser';
 
 export default function Profile() {
+    const userdata = JSON.parse(localStorage.getItem("userdata"))
+    const [updateuserbox, setupdateuserbox] = React.useState(false)
     return (
         <section className="s8">
+            {updateuserbox && <Updateuser setupdateuser={setupdateuserbox} />}
             <div className="s88">
                 <div className="left">
                     <div className="d1">
@@ -10,14 +14,14 @@ export default function Profile() {
                         <div className="edit">
                             <i className="fa-solid fa-pen"></i>
                         </div>
-                        <img className="profile" src='./images/profileimage.jpeg' alt="ProfileImage" />
+                        <img className="profile" src='./images/profileimage.jpeg' alt="ProfileImage" onClick={() => setupdateuserbox(true)}/>
                         <div className="d11">
                             <div className="pen">
                                 <i className="fa-solid fa-pen pen"></i>
                             </div>
                             <div className="d111">
                                 <div className="d1112">
-                                    <p className="username">User Name</p>
+                                    <p className="username">{userdata?.name}</p>
                                     <p className="descirption">Aspiring Full Stack Web Development At Masai School</p>
                                 </div>
                                 <div className="d1113">

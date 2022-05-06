@@ -33,9 +33,10 @@ export default function Login({ setlogedin, islogedin }) {
         })
             .then((res) => res.json())
             .then((res) => {
-                // console.log(res[0].token)
+                console.log(res)
                 if(res[0].token.length > 1) {
                     // setToken(res[0].token)
+                    localStorage.setItem('userdata', JSON.stringify(res[0].userdata));
                     localStorage.setItem('tokenIs', res[0].token);
                     // dispatch(login())
                     alert("You are loged in")
@@ -48,6 +49,7 @@ export default function Login({ setlogedin, islogedin }) {
                     // dispatch(logout())
                     alert("Invalid credantial")
                     localStorage.setItem('tokenIs', "");
+                    localStorage.setItem('userdata', "");
                     // setlogedin("")
                 }
             })

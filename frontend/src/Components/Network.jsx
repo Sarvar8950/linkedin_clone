@@ -3,6 +3,7 @@ import React from 'react'
 export default function Network() {
     const [num, setNum] = React.useState(true)
     const [list, setList] = React.useState([])
+    const userdata = JSON.parse(localStorage.getItem("userdata"))
 
     React.useEffect(() => {
         fetch(`http://localhost:8001/networkdata`)
@@ -83,10 +84,10 @@ export default function Network() {
                         <hr />
                         <div className="d5">
                             <p className="addpersonal">Add personal contacts </p>
-                            <p style={{textAlign : "center"}}>User Name</p>
+                            <p style={{textAlign : "center"}}>{userdata?.name}</p>
                             <p className="small align-centre">We’ll periodically import and store your contacts to help you and others connect. You choose who to connect to and who to invite.   <span className="link"> Learn more</span></p>
                             <div className="mail">
-                                <p>User Name</p>
+                                <p>{userdata?.email}</p>
                             </div>
                             <button className="continue">Continue</button>
                             <p className="moreoption">More Option</p>
