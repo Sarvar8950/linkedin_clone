@@ -18,9 +18,12 @@ import { NotiFicationMess } from '../../Utility/NotiFicationMess'
 import {   getAllPost2,    deleteCommet, deletPost, show1posttypeAllComment,
   showCommentInputBox, upadtePostLike, addComentToPost } from '../../Redux/AllPost/allPostAction'
 import { useAuth0 } from '@auth0/auth0-react';
+
+
 export const Posts = () => {
-  const [allPost, setAllPost] = useState([]);
-  console.log('allPost',allPost);
+  // const [allPost, setAllPost] = useState([]);
+  const [check,setcheck] = useState(true)
+  // console.log('allPost',allPost);
   const [sendComment, setSendComment] = useState("");
   // const [viewComment, setViewComment] = useState(false)
   let postIs = useSelector((store) => store.allPost.allPost);
@@ -32,11 +35,11 @@ export const Posts = () => {
   useEffect(() => {
     const postData = () => {
       axios.get(`${baseUrl}/get-all-post`).then((res) => {
-        console.log("res allpost", res);
+        // console.log("res allpost", res);
         if (res?.data?.length > 0) {
-          console.log("dispatch  action ");
+          // console.log("dispatch  action ");
           dispatch(getAllPost2(res?.data));
-          setAllPost(res.data);
+          // setAllPost(res.data);
         }
       });
     };
@@ -94,13 +97,15 @@ export const Posts = () => {
   const handleComment = (e) => {
     setSendComment(e.target.value);
   };
-
+  const name = JSON.parse(localStorage.getItem('res'))
+    // [0].userdata.name
+    let userName = name?.[0]?.userdata?.name;
   const sendcommentOnPost = (id) => {
-    console.log('idd comment', id)
+    // console.log('idd comment', id)
     const c = {
       userProfilePic: "",
       id: uuid(),
-      userName: user?.nickname||'test-comment',
+      userName: userName||'User Name',
       userPosition: "working at google",
       userActivityTrack: '',
       commentTime: new Date(),
@@ -110,7 +115,7 @@ export const Posts = () => {
       return (item.id !== id ? item : { ...item, commentMessage: [c, ...item?.commentMessage], commentStatus: true })
     }
     );
-    console.log('updatedComment', updatedComment)
+    // console.log('updatedComment', updatedComment)
     dispatch(addComentToPost(updatedComment))
     setSendComment("");
   };
@@ -139,17 +144,9 @@ export const Posts = () => {
     dispatch(deleteCommet(data))
 
   }
-  const delete1 = (id)=>{
-    axios.delete(`${baseUrl}/delete/${id}`)
-    .then((res)=>{
-      console.log('deletdd post of Id', id, 'response',res)
-    })
-    .catch((er)=>{
-      console.log('get error in delete api', er)
-    })
-  }
   const handleDeletePost = (id) => {
     // delete1(id)
+    // console.log(id)
     axios.delete(`${baseUrl}/delete/${id}`)
         .then((res)=>{
             console.log('delete api res is ', res);
@@ -159,17 +156,17 @@ export const Posts = () => {
         })
 
     // console.log("handleDeletePost", id)
-    // const updatedData = postIs.filter((item) => item.id !== id)
-    // dispatch(deletPost(updatedData))
+    const updatedData = postIs.filter((item) => item.id !== id)
+    dispatch(deletPost(updatedData))
   }
-  function deletepostshowhide() {
-    var deletebtn = document.getElementById("deletebtn")
-    if(deletebtn.style.display === "none") {
-      deletebtn.style.display = "block"
-    } else {
-      deletebtn.style.display = "none"
-    }
-  }
+  // function deletepostshowhide() {
+  //   var deletebtn = document.querySelector(".deletebtn")
+  //   if(deletebtn.style.display === "none") {
+  //     deletebtn.style.display = "block"
+  //   } else {
+  //     deletebtn.style.display = "none"
+  //   }
+  // }
   const commentinput = {
     fontSize : "15px",
     marginBottom : "5px",
@@ -210,8 +207,8 @@ export const Posts = () => {
                     <img src="/images/profileimage.jpeg" alt="User Profile" />
                   </div>
                   <div className="l2">
-                    <p>{item.userCreatedPostName}</p>
-                    <p className="small">{item.nameOfOrganization}</p>
+                    {/* <p>{item.userCreatedPostName}</p> */}
+                    <p className="">{item.nameOfOrganization}</p>
                     <p className="small">
                       {dateDiffrance(new Date(), item.postCreatedTime)} ago
                     </p>
@@ -220,16 +217,18 @@ export const Posts = () => {
                       delete item
                     </button>
                     */}
-                   <button id="deletebtn" style={{position:"absolute",right:0 ,border: "1px solid #fff", background: "#1b2226", display:"none" }} 
+                   {/* <button className="deletebtn" style={{position:"absolute",right:0 ,border: "1px solid #fff", background: "#1b2226", display:"none" }} 
                     onClick={() => { handleDeletePost(item?.id) }}>
-                      <NotiFicationMess msg={" Post Delete Succesfully !"} btn={"Delete 123"} />
-                    </button>
+                      <NotiFicationMess msg={" Post Delete Succesfully !"} btn={"Delete"} />
+                    </button> */}
                     <p style={{ marginBottom: "20px" }}> {item.postDescription} </p>
                   </div>
                 </div>
                 <p className="righttext">
-                  <i class="fa-solid fa-bookmark"></i>
-                  <i class="fa-solid fa-ellipsis" onClick={deletepostshowhide}></i>
+                  <i className="fa-solid fa-bookmark"></i>
+                  {!check && <NotiFicationMess msg={" Post Delete Succesfully !"} btn={""} />}
+                  <i className="fa-solid fa-trash" onClick={() => { handleDeletePost(item?.id); setcheck(true) }}></i>
+                  {/* <i class="fa-solid fa-ellipsis" onClick={deletepostshowhide}></i> */}
                 </p>
               </div>
             </div>
@@ -292,7 +291,7 @@ export const Posts = () => {
                   placeholder="Add a comment..."
                 />
                 {sendComment !== "" && (
-                  <button style={commentbtn} onClick={() =>{sendcommentOnPost(item?.id); console.log('idd', item?.id)}}>Post </button>
+                  <button style={commentbtn} onClick={() =>{sendcommentOnPost(item?.id)}}>Post </button>
                 )}
               </div>)
               }
@@ -315,7 +314,7 @@ export const Posts = () => {
                      
                       <div
                         className="comment-main"
-                        style={{ width: "100%", border: "1px solid white !important", display: "flex", flexDirection: "row", marginTop : "10px" }}
+                        style={{textAlign:"left" ,width: "100%", border: "1px solid white !important", display: "flex", flexDirection: "row", marginTop : "10px" }}
                       >
                         <div style={{ margin: "6px 0 0 0" }}>
                           {user?.nickname===val.userName ? 

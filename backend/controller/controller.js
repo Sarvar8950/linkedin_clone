@@ -34,9 +34,9 @@ const register = async (req,res) => {
 }
 
 async function sendmail(data) {
-    console.log(data)
-    console.log(data.email)
-    console.log(data.name)
+    // console.log(data)
+    // console.log(data.email)
+    // console.log(data.name)
     const info = await mailservice.sendMail({
         from: '"Sarvar 👻" <sarvar@example.com>',
         to: `${data.email}`,
@@ -61,9 +61,9 @@ async function login(req,res,next) {
             password: "",
         }
         const token = jwtservice.generateToken(userdetails);
-        console.log(token)
+        // console.log(token)
         res.status(200).send([{"token" : token, "userdata" : response}]);
-        console.log('gg', [{"token" : token, "userdata" : response}])
+        // console.log('gg', [{"token" : token, "userdata" : response}])
     } else {
         console.log("Something is wrong")
         res.status(400).send("Data not matched")
@@ -71,7 +71,7 @@ async function login(req,res,next) {
 }
 
 async function saveimg(req, res, next) {
-    console.log(req.body)
+    // console.log(req.body)
     // res.send(req.file.filename)
     // var obj = {
     //     name: req.file.filename,

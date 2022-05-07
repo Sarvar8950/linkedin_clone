@@ -15,6 +15,7 @@ const post = new mongoose.Schema({
     "showCommentInput" : { type:Boolean  },
     "share":{type:Number},
     "id":  { type:String },
+    "postCreatedTime" : String,
 });
 
 module.exports = mongoose.model('posts', post);

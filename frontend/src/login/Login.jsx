@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import style from "./login.module.css"
 import { Link, useNavigate } from 'react-router-dom'
 import {baseUrl} from '../Components/config'
+// import { NotiFicationMess } from '../Utility/NotiFicationMess'
 // import { useDispatch } from 'react-redux';
 // import { login, logout } from "../Redux/action"
 
@@ -33,7 +34,7 @@ export default function Login({ setlogedin, islogedin }) {
         })
             .then((res) => res.json())
             .then((res) => {
-                console.log(res)
+                // console.log(res)
                 setData(res)
                 console.log('dddd', data)
                 // if()

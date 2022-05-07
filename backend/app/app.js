@@ -65,4 +65,5 @@ app.post('/saveImage', upload2.single('file'), postController.saveImage)
 
 app.post('/createPost', postController.createUserData)
 app.get('/get-all-post', postController.getAllPost)
+app.delete(`/delete/:id`, postController.deletePost)
 module.exports = app

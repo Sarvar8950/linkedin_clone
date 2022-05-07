@@ -28,7 +28,7 @@ export const ImgTOBase64 = ({setImgData}) => {
   return (
     <div>
         {/* <h>ImgTOBase64</h> */}
-{baseImage.length<2 ?<input type='file' onChange={(e)=>uploadImage(e)} /> :   <img src={baseImage} height='40px' width='40px' alt='mmm'/>}
+{baseImage.length<2 ? <input type='file' onChange={(e)=>uploadImage(e)} /> :   <img src={baseImage} height='40px' width='40px' alt='mmm'/>}
         <br/>
       
     </div>

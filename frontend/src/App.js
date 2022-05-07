@@ -17,7 +17,7 @@ import Message from './Components/Message';
 
 function App() {
   const [islogedin, setlogedin] = React.useState('')
-  console.log(localStorage.getItem("tokenIs"),"before code")
+  // console.log(localStorage.getItem("tokenIs"),"before code")
   return (
     <div className="App">
       {localStorage.getItem("tokenIs") === null ? 
