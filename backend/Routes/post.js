@@ -14,7 +14,9 @@ app.use(bodyParser.json([]));
 app.post('/saveImage', upload2.single('file'), postController.saveImage)
 
 app.post('/createPost', postController.createUserData)
-app.get('/get-all-post', postController.getAllPost)
+app.get('/get-all-post', postController.getAllPost);
+app.delete("/delete/:id",  postController.deletePost)
+// app.delete('/user/:userId', userController.deleteUser);
 
 
 module.exports=app

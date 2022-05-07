@@ -20,7 +20,7 @@ import {   getAllPost2,    deleteCommet, deletPost, show1posttypeAllComment,
 import { useAuth0 } from '@auth0/auth0-react';
 export const Posts = () => {
   const [allPost, setAllPost] = useState([]);
-  console.log(allPost)
+  console.log('allPost',allPost);
   const [sendComment, setSendComment] = useState("");
   // const [viewComment, setViewComment] = useState(false)
   let postIs = useSelector((store) => store.allPost.allPost);
@@ -86,15 +86,17 @@ export const Posts = () => {
 
   const handlePostLike = (id) => {
     const updatedData = postIs.map((item) =>
-      item.id !== id ? item : { ...item, totalLike: item?.totalLike + 1 }
+      item.id !== id ? item : { ...item, totalLike: +item?.totalLike + 1 }
     );
     dispatch(upadtePostLike(updatedData));
+    console.log('updatedData', updatedData)
   };
   const handleComment = (e) => {
     setSendComment(e.target.value);
   };
 
   const sendcommentOnPost = (id) => {
+    console.log('idd comment', id)
     const c = {
       userProfilePic: "",
       id: uuid(),
@@ -108,6 +110,7 @@ export const Posts = () => {
       return (item.id !== id ? item : { ...item, commentMessage: [c, ...item?.commentMessage], commentStatus: true })
     }
     );
+    console.log('updatedComment', updatedComment)
     dispatch(addComentToPost(updatedComment))
     setSendComment("");
   };
@@ -136,9 +139,28 @@ export const Posts = () => {
     dispatch(deleteCommet(data))
 
   }
+  const delete1 = (id)=>{
+    axios.delete(`${baseUrl}/delete/${id}`)
+    .then((res)=>{
+      console.log('deletdd post of Id', id, 'response',res)
+    })
+    .catch((er)=>{
+      console.log('get error in delete api', er)
+    })
+  }
   const handleDeletePost = (id) => {
-    const updatedData = postIs.filter((item) => item.id !== id)
-    dispatch(deletPost(updatedData))
+    // delete1(id)
+    axios.delete(`${baseUrl}/delete/${id}`)
+        .then((res)=>{
+            console.log('delete api res is ', res);
+        }).catch((er)=>{
+            console.log('delete api error is  ', er);
+
+        })
+
+    // console.log("handleDeletePost", id)
+    // const updatedData = postIs.filter((item) => item.id !== id)
+    // dispatch(deletPost(updatedData))
   }
   function deletepostshowhide() {
     var deletebtn = document.getElementById("deletebtn")
@@ -176,7 +198,8 @@ export const Posts = () => {
   return (
     <div>
       {/* <button onClick={sendPost}>Post data</button> */}
-      {postIs?.map((item) => {
+      {
+      postIs?.map((item) => {
         return (
           <div key={item.id} className="post" style={{ marginBottom: "20px" }}>
             {/* <button onClick={handleDispatch}>submit allPost</button> */}
@@ -187,13 +210,19 @@ export const Posts = () => {
                     <img src="/images/profileimage.jpeg" alt="User Profile" />
                   </div>
                   <div className="l2">
-                    <p>{item.userCreatedPostName} User</p>
+                    <p>{item.userCreatedPostName}</p>
                     <p className="small">{item.nameOfOrganization}</p>
                     <p className="small">
                       {dateDiffrance(new Date(), item.postCreatedTime)} ago
                     </p>
-                    <button id="deletebtn" style={{position:"absolute",right:0 ,border: "1px solid #fff", background: "#1b2226", display:"none" }} onClick={() => { handleDeletePost(item.id) }}>
-                      <NotiFicationMess msg={" Post Delete Succesfully !"} btn={"Delete"} />
+                    {/* <button 
+                    onClick={() => { handleDeletePost(item?.id) }}>
+                      delete item
+                    </button>
+                    */}
+                   <button id="deletebtn" style={{position:"absolute",right:0 ,border: "1px solid #fff", background: "#1b2226", display:"none" }} 
+                    onClick={() => { handleDeletePost(item?.id) }}>
+                      <NotiFicationMess msg={" Post Delete Succesfully !"} btn={"Delete 123"} />
                     </button>
                     <p style={{ marginBottom: "20px" }}> {item.postDescription} </p>
                   </div>
@@ -263,7 +292,7 @@ export const Posts = () => {
                   placeholder="Add a comment..."
                 />
                 {sendComment !== "" && (
-                  <button style={commentbtn} onClick={() => sendcommentOnPost(item.id)}>Post </button>
+                  <button style={commentbtn} onClick={() =>{sendcommentOnPost(item?.id); console.log('idd', item?.id)}}>Post </button>
                 )}
               </div>)
               }

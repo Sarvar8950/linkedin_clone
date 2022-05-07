@@ -62,7 +62,8 @@ async function login(req,res,next) {
         }
         const token = jwtservice.generateToken(userdetails);
         console.log(token)
-        res.status(200).send([{"token" : token, "userdata" : response}])
+        res.status(200).send([{"token" : token, "userdata" : response}]);
+        console.log('gg', [{"token" : token, "userdata" : response}])
     } else {
         console.log("Something is wrong")
         res.status(400).send("Data not matched")

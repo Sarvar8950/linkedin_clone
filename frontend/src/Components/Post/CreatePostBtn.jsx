@@ -35,6 +35,9 @@ console.log('xx', xx)
 
         })
     }
+    const name= JSON.parse(localStorage.getItem('res'))
+    // [0].userdata.name
+    let userName=name?. [0]?.userdata?.name;
     console.log('postDelete', postDelete)
     const sendPost = () => {
         const postData = {
@@ -66,10 +69,26 @@ console.log('xx', xx)
         };
         //      .post(`${baseUrl}/allpost`, postData)
         const obj={
-            firstName:'sss',
-            lastName:'dddd',
+            firstName:userName,
+            id:uuid(),
+            postDescription: postDescription!==null? postDescription:'',
             image:imgData,
-            comments:['shivling', 'aaaa']
+            comments:[{
+                userProfilePic: "",
+                id: "xxx",
+                userName: "test-user",
+                userPosition: "working at google",
+                userActivityTrack: "",
+                commentTime:  "Sat May 07 2022 01:35:57 GMT-0700",
+                commentDecription: "first test comm"
+          }],
+            nameOfOrganization: userName,
+            share: 0,
+            totalComment: 0,
+            totalLike:0,
+            commentStatus: false,
+            showCommentInput: false,
+          userCreatedPostName:userName,
         }
         axios
           .post(`${baseUrl}/createPost`, obj)

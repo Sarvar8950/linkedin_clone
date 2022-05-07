@@ -9,6 +9,8 @@ export default function Body() {
     const [num, setNum] = React.useState(true);
     const userdata = JSON.parse(localStorage.getItem("userdata"))
     // console.log(userdata)
+    // let userdata1=''
+    
     const [startpost, setstartpost] = React.useState(false)
     function startPost() {
         setstartpost(true)
@@ -23,6 +25,10 @@ export default function Body() {
             show.innerHTML = `<p>Show less <i class="fa-solid fa-chevron-up"></i></p>`
         }
     }
+    const name= JSON.parse(localStorage.getItem('res'))
+    // [0].userdata.name
+    let user=name?. [0]?.userdata?.name;
+    
     return (
         <>
             {startpost && <CreatePostBtn startpost={setstartpost} />}
@@ -36,7 +42,10 @@ export default function Body() {
                                 </div>
                                 <div className="box12">
                                     <img src="/images/profileimage.jpeg" alt="UserImage" />
-                                    <Link to="/profile"><b>{userdata?.name}</b></Link>
+                                    <Link to="/profile"><b>
+                                        hh {user}
+                                        {/* {userdata?.name} */}
+                                    </b></Link>
                                     <p className="small">Aspiring Full Stack Web Development at Masai School</p>
                                 </div>
                             </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import style from "./login.module.css"
 import { Link, useNavigate } from 'react-router-dom'
 import {baseUrl} from '../Components/config'
@@ -9,10 +9,10 @@ export default function Login({ setlogedin, islogedin }) {
     const navigate = useNavigate();
     // const dispatch = useDispatch()
     const [email, setemail] = React.useState("")
-    const [password, setpassword] = React.useState("")
+    const [password, setpassword] = React.useState("");
+    const [data, setData]=useState([])
     // const [token, setToken] = React.useState("")
-
-    
+   
     
     function loginfun(e) {
         e.preventDefault();
@@ -34,9 +34,17 @@ export default function Login({ setlogedin, islogedin }) {
             .then((res) => res.json())
             .then((res) => {
                 console.log(res)
-                if(res[0].token.length > 1) {
+                setData(res)
+                console.log('dddd', data)
+                // if()
+                if(res?.[0]?.token?.length > 1) {
                     // setToken(res[0].token)
-                    localStorage.setItem('userdata', JSON.stringify(res[0].userdata));
+                    // if(JSON.parse(localStorage.getItem('userdata'))==null){
+                    //     localStorage.setItem('userdata', JSON.stringify(res?.[0]?.userdata));
+                    // }
+                    localStorage.setItem('userdata', JSON.stringify(res?.[0]));
+                    localStorage.setItem('res', JSON.stringify(res));
+                    localStorage.setItem('userdata', JSON.stringify(res?.[0]?.userdata));
                     localStorage.setItem('tokenIs', res[0].token);
                     // dispatch(login())
                     alert("You are loged in")
@@ -66,7 +74,7 @@ export default function Login({ setlogedin, islogedin }) {
             btn.innerText = "Show"
         }
     }
-
+console.log('ffff', data)
     return (
         <>
             <div className={style.loginpage}>

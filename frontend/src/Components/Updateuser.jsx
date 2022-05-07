@@ -1,6 +1,6 @@
 import React from 'react'
 import "./updateuser.css"
-
+// import {   }
 export default function Updateuser({setupdateuser}) {
     return (
         <>
