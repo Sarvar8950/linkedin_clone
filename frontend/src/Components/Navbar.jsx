@@ -62,7 +62,7 @@ export default function Navbar() {
                                 <div className="me">
                                     <Link to="/profile">
                                         {/* <img src={user.picture} alt="Account Holder" /> */}
-                                        <img src="./images/profileimage.jpeg" alt="Account Holder" />
+                                        <img src="./images/profileimage3.jpeg" alt="Account Holder" />
                                         <p>Me <i className="fa-solid fa-caret-down"></i></p>
 
                                     </Link>

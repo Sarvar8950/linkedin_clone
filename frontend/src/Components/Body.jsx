@@ -41,7 +41,7 @@ export default function Body() {
                                     <img src="/images/profilebg.webp" alt="UserBackground" />
                                 </div>
                                 <div className="box12">
-                                    <img src="/images/profileimage.jpeg" alt="UserImage" />
+                                    <img src="/images/profileimage3.jpeg" alt="UserImage" />
                                     <Link to="/profile"><b>
                                         {user}
                                         {/* {userdata?.name} */}
@@ -81,7 +81,7 @@ export default function Body() {
                         <div className="up">
                             <div className="d1">
                                 <div className="d2">
-                                    <img src="/images/profileimage.jpeg" alt="UserImage" />
+                                    <img src="/images/profileimage3.jpeg" alt="UserImage" />
                                     <p onClick={startPost}>Start a post</p>
                                 </div>
                                 <div className="d3">

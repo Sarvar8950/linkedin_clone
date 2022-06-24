@@ -331,7 +331,7 @@ export const Posts = () => {
                             width="40px"
                             height="40px"
                             style={{ borderRadius: "50%" }}
-                            src="/images/profileimage.jpeg"
+                            src="/images/profileimage3.jpeg"
                             alt="userProfile"
                           />
                           }

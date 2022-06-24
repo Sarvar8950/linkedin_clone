@@ -48,7 +48,7 @@ export default function Login({ setlogedin, islogedin }) {
                     localStorage.setItem('userdata', JSON.stringify(res?.[0]?.userdata));
                     localStorage.setItem('tokenIs', res[0].token);
                     // dispatch(login())
-                    alert("You are loged in")
+                    // alert("You are loged in")
                     // setlogedin(res[0].token)
                     // localStorage.setItem("token" , islogedin)
                     navigate("/home")

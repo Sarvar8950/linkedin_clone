@@ -14,7 +14,7 @@ export default function Profile() {
                         <div className="edit">
                             <i className="fa-solid fa-pen"></i>
                         </div>
-                        <img className="profile" src='./images/profileimage.jpeg' alt="ProfileImage" onClick={() => setupdateuserbox(true)}/>
+                        <img className="profile" src='./images/profileimage3.jpeg' alt="ProfileImage" onClick={() => setupdateuserbox(true)}/>
                         <div className="d11">
                             <div className="pen">
                                 <i className="fa-solid fa-pen pen"></i>

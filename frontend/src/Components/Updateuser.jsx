@@ -11,7 +11,7 @@ export default function Updateuser({setupdateuser}) {
                         <i className="fa-solid fa-xmark" onClick={() => setupdateuser(false)}></i>
                     </div>
                     <div className="profile">
-                        <img src="./images/profileimage.jpeg" alt="profile" />
+                        <img src="./images/profileimage3.jpeg" alt="profile" />
                     </div>
                     <div className="d2">
                         <i className="fa-solid fa-eye"></i>
