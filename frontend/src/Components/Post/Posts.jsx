@@ -227,7 +227,8 @@ export const Posts = () => {
                 <p className="righttext">
                   <i className="fa-solid fa-bookmark"></i>
                   {!check && <NotiFicationMess msg={" Post Delete Succesfully !"} btn={""} />}
-                  <i className="fa-solid fa-trash" onClick={() => { handleDeletePost(item?.id); setcheck(true) }}></i>
+                  <i className="fa-solid fa-ellipsis" onClick={() => { handleDeletePost(item?.id); setcheck(true) }}></i>
+                  {/* <i className="fa-solid fa-trash" onClick={() => { handleDeletePost(item?.id); setcheck(true) }}></i> */}
                   {/* <i class="fa-solid fa-ellipsis" onClick={deletepostshowhide}></i> */}
                 </p>
               </div>
